@@ -10,10 +10,15 @@ public class MazeMaker : MonoBehaviour
     public int mapSizeX;
     public int mapSizeZ;
     public Transform mapParent;
+    public List<Transform> spawnpoints;
     public NavMeshSurface surface;
     private void Start()
     {
-        MakeMaze();
+        for(int i=0; i<spawnpoints.Count; i++)
+        {
+            mapParent = spawnpoints[i];
+            MakeMaze();
+        }
         surface.BuildNavMesh();
     }
     public void MakeMaze()
